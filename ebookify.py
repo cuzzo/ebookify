@@ -2,6 +2,7 @@
 
 import sys
 import codecs
+import os
 
 import pystache
 
@@ -18,7 +19,9 @@ def read_plain_text_book(ifile):
 
 def write_ebook(ofile, lines, author, title):
     template = ""
-    with open("template.html", "r") as f:
+    path = os.path.join(os.path.dirname(__file__), "template.html")
+
+    with open(path, "r") as f:
         template = "".join(f.readlines())
 
     ebook = pystache.render(template, {
